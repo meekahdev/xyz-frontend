@@ -7,6 +7,7 @@ import Header from '../Layout/Header/Header';
 
 const Login = (props) => {
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const history = useHistory();
@@ -17,14 +18,16 @@ const Login = (props) => {
         }
     }, []);
 
+    console.log(process.env,BASE_URL);
+
     const loginHandler = () => {
         const obj = {
             password,
             email
         }
-
+        
         console.log('Authenticating Api');
-        axios.post('http://127.0.0.1:8000/api/login',obj).then(response => {
+        axios.post(BASE_URL+'/api/login',obj).then(response => {
             console.log('Authenticated Api');
             let userData = response.data.data;
             localStorage.setItem('logged-user', JSON.stringify(userData)); 

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 const MyPost = (props) => {
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
     const [posts, setPosts] = useState([]);
     const [loader, setLoader] = useState(false);
     const loggedUser = JSON.parse(localStorage.getItem('logged-user'));
@@ -25,7 +26,7 @@ const MyPost = (props) => {
         };
 
         console.log('Fetching GetMyPosts Api');
-        axios.get('http://127.0.0.1:8000/api/post/get-my-posts', config ).then(response => {
+        axios.get(BASE_URL+'/api/post/get-my-posts', config ).then(response => {
             console.log('Fetched GetMyPosts Api');
             setPosts(response.data.data)
             setLoader(false);
@@ -45,7 +46,7 @@ const MyPost = (props) => {
         }
         
         console.log('Posting StatusChange Api');
-        axios.post('http://127.0.0.1:8000/api/admin/post/status/change', data, config ).then(response => {
+        axios.post(BASE_URL+'/api/admin/post/status/change', data, config ).then(response => {
             console.log('Posted StatusChange Api');
             alert(`Successfully ${status}`);
             setCount(count+1)
@@ -70,7 +71,7 @@ const MyPost = (props) => {
         };
         
         console.log('Deleting PostDelete Api');
-        axios.delete('http://127.0.0.1:8000/api/post/delete/'+id, config ).then(response => {
+        axios.delete(BASE_URL+'/api/post/delete/'+id, config ).then(response => {
             alert('Successfully Deleted');
             console.log('Deleted PostDelete Api');
             setCount(count+1)

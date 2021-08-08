@@ -7,6 +7,7 @@ import Header from '../Layout/Header/Header';
 
 const Register = () => {
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
     const [name,setName] = useState("");
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
@@ -25,11 +26,11 @@ const Register = () => {
             email
         }
         console.log('Posting Register Api');
-        axios.post('http://127.0.0.1:8000/api/register',regObj).then(response => {
+        axios.post(BASE_URL+'/api/register',regObj).then(response => {
             console.log('Posted Register Api');
             let userData = response.data.data;
             localStorage.setItem('logged-user', JSON.stringify(userData)); 
-            history.push('/posts');
+            history.push('/');
         }).catch(error => {
             console.log('Error Register Api');
             alert('Something Went Wrong');

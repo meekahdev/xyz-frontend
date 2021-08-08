@@ -9,6 +9,7 @@ import './DetailPost.css'
 
 const DetailPost = (props) => {
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
     const [loader, setLoader] = useState(false);
     const [post, setpost] = useState({});
     const [comment, setComment] = useState("");
@@ -30,7 +31,7 @@ const DetailPost = (props) => {
         };
         
         console.log('Fetching GetPostByID Api');
-        axios.get('http://127.0.0.1:8000/api/post/get/'+id, config ).then(response => {
+        axios.get(BASE_URL+'/api/post/get/'+id, config ).then(response => {
             console.log('Fetched GetPostByID Api');
             setLoader(false);
             setpost(response.data.data);
@@ -51,7 +52,7 @@ const DetailPost = (props) => {
             }
             
             console.log('Posting PostComment Api');
-            axios.post('http://127.0.0.1:8000/api/post/comment', data, config ).then(response => {
+            axios.post(BASE_URL+'/api/post/comment', data, config ).then(response => {
                 console.log('Posted PostComment Api');
                 alert('Successfully Comment Added');
                 setCount(count + 1 );

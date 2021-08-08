@@ -7,6 +7,7 @@ import Post from '../Post/Post';
 
 const Home = (props) => {
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
     const [posts, setPosts] = useState([]);
     const [loader, setLoader] = useState(false);
     const loggedUser = JSON.parse(localStorage.getItem('logged-user'));
@@ -28,7 +29,7 @@ const Home = (props) => {
         };
 
         console.log('Fetching GetAllPosts Api');
-        axios.get('http://127.0.0.1:8000/api/post/get-all', config ).then(response => {
+        axios.get(BASE_URL+'/api/post/get-all', config ).then(response => {
             console.log('Fetched GetAllPosts Api');
             setPosts(response.data.data)
             setLoader(false);
