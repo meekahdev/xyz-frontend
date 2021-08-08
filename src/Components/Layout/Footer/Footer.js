@@ -12,13 +12,13 @@ const Footer = (props) => {
                                     <p>Copyright &copy; 2021, All Right Reserved <a href="#">XYZ Company</a></p>
                                 </div>
                             </div>
-                            <div className="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                            {/* <div className="col-xl-6 col-lg-6 d-none d-lg-block text-right">
                                 <div className={styles.footer_menu} >
                                     <ul>
                                         <li><a href="#">Sign Up?</a></li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
