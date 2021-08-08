@@ -1,0 +1,21 @@
+.grid-button{
+    margin-right: 5px;
+}
+
+.heading{
+    display: inline-block;
+}
+
+.heading-btn{
+    float: right;
+}
+
+.heading-btn a{
+    color: white;
+    text-decoration: none;
+}
+
+.heading-btn a:hover{
+    color: white;
+    text-decoration: none;
+}
